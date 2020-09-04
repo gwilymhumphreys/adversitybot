@@ -1,0 +1,48 @@
+{
+  "name": "adversitybot",
+  "version": "0.1.0",
+  "description": "",
+  "scripts": {
+    "start": "node index.js",
+    "start-dev": "eval $(cat .env) BABEL_ENV=node nodemon index.js",
+    "races": "BABEL_ENV=node babel-node races.js",
+    "tv": "BABEL_ENV=node babel-node tv.js"
+  },
+  "main": "races.js",
+  "dependencies": {
+    "@babel/cli": "^7.0.0",
+    "@babel/core": "^7.0.0",
+    "@babel/plugin-proposal-class-properties": "^7.0.0",
+    "@babel/plugin-proposal-decorators": "^7.0.0",
+    "@babel/plugin-proposal-object-rest-spread": "^7.0.0",
+    "@babel/plugin-transform-runtime": "^7.0.0",
+    "@babel/polyfill": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "@babel/preset-react": "^7.0.0",
+    "@babel/register": "^7.0.0",
+    "@babel/runtime": "^7.0.0",
+    "babel-eslint": "^10.0.3",
+    "babel-jest": "^24.0.0",
+    "babel-plugin-add-module-exports": "^1.0.2",
+    "babel-plugin-transform-require-default": "^0.1.5",
+    "eslint": "^6.4.0",
+    "eslint-config-founderlab": "^0.3.16",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jest": "^22.17.0",
+    "eslint-plugin-react": "^7.14.3",
+    "chalk": "^4.1.0",
+    "discord.js": "^12.3.1",
+    "form-data": "^3.0.0",
+    "gradient-string": "^1.1.0",
+    "lodash": "^4.17.10",
+    "markdown-table": "^2.0.0",
+    "node-fetch": "^2.2.0",
+    "string-width": "^4.2.0",
+    "tinygradient": "^1.1.2"
+  },
+  "devDependencies": {
+    "@babel/node": "^7.10.5"
+  },
+  "author": "",
+  "license": "ISC"
+}
