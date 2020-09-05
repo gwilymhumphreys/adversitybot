@@ -31,7 +31,7 @@ export async function handleMessage(message) {
         '```!al My lovely team name```' +
         ' \n\n ',
       )
-      await message.channel.send(`\n\n----------------\n\nTo add adversitybot to your channel head to  https://discordapp.com/oauth2/authorize?client_id=747055885645381662&scope=bot`)
+      await message.channel.send(`\n\n----------------\n\nTo add adversitybot to your channel head to <https://discordapp.com/oauth2/authorize?client_id=747055885645381662&scope=bot>`)
       await message.channel.send(`It's well behaved and will only respond to DMs or messages from a channel named 'adversitybot'`)
       return
     }
@@ -39,7 +39,7 @@ export async function handleMessage(message) {
     const teamName = args.join(' ')
     let results
     if (!teamName) return message.channel.send('Enter a team name to check after the command, e.g. ```!a My lovely team name```')
-    message.channel.send(`Checking team '${teamName}'`)
+    message.channel.send(`Checking team \`${teamName}\`...`)
 
     if (command === 'as' || command === 'adversityshort') results = await adversityShort(teamName)
     else if (command === 'al' || command === 'adversitylong') results = await adversityLong(teamName)
