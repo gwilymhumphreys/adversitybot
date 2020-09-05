@@ -1,4 +1,6 @@
-'use strict';
+/*
+  this is https://github.com/bokub/gradient-string with a minor change to count whitespace as part of the string length
+*/
 
 const chalk = require('chalk');
 const tinygradient = require('tinygradient');

@@ -2,6 +2,10 @@ import Discord from 'discord.js'
 import { adversity, adversityLong, adversityShort } from './adversity'
 
 
+const prepend = '```json\n'
+const append = '```'
+const codeBlock = text => prepend+text+append
+
 const prefix = process.env.PREFIX || '!'
 const token = process.env.DISCORD_BOT_TOKEN
 if (!token) {
@@ -46,14 +50,13 @@ export async function handleMessage(message) {
     else results = await adversity(teamName)
 
     const {
-      table,
+      resultsTable,
       summary,
     } = results
 
-    const wrappedTable = '```json\n'+table+'```'
-    await message.channel.send(summary)
-
-    console.log(await message.channel.send(wrappedTable, {split: {prepend: '```json\n', append: '```'}}))
+    message.channel.send(codeBlock(summary))
+    message.channel.send(' ')
+    await message.channel.send(codeBlock(resultsTable), {split: {prepend, append}})
   }
   catch (err) {
     console.log(err)
@@ -62,16 +65,21 @@ export async function handleMessage(message) {
 }
 
 try {
-  console.log(`adversitybot starting, token ${!!token}, prefix '${prefix}'`)
-  const client = new Discord.Client()
+  if (process.env.PAUSE_BOT) {
+    console.log('Bot is PAUSED, delete the PAUSE_BOT env variable and restart to enable')
+  }
+  else {
+    console.log(`adversitybot starting, token ${!!token}, prefix '${prefix}'`)
+    const client = new Discord.Client()
 
-  client.on('ready', () => {
-    console.log(`adversitybot logged in as ${client.user.tag}!`)
-  })
+    client.on('ready', () => {
+      console.log(`adversitybot logged in as ${client.user.tag}!`)
+    })
 
-  client.on('message', handleMessage)
+    client.on('message', handleMessage)
 
-  client.login(token)
+    client.login(token)
+  }
 }
 catch (err) {
   console.log(err)

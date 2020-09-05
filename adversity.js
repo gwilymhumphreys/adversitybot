@@ -23,8 +23,8 @@ const formatResults = (data, useColour) => {
   for (const row of data.Data.rows) {
     results.unshift({
       date: new Date(row[data.Data.cols.indexOf('date')]),
-      opponentTeam: row[data.Data.cols.indexOf('coachopp')],
-      team: row[data.Data.cols.indexOf('teamnameopp')],
+      opponent: row[data.Data.cols.indexOf('coachopp')],
+      opponentTeam: row[data.Data.cols.indexOf('teamnameopp')],
       result: +row[data.Data.cols.indexOf('win')] ? 'win' : (+row[data.Data.cols.indexOf('draw')] ? 'draw' : 'loss'),
       score: row[data.Data.cols.indexOf('score')] + '-' + row[data.Data.cols.indexOf('scoreopp')],
       tvDiff: +row[data.Data.cols.indexOf('tvdiff')],
@@ -108,16 +108,26 @@ export async function _adversity(headings, teamName, season=34, options={}) {
     avgRank,
   } = res
 
-  const table = resultsToTable(results, headings)
+  const resultsTable = resultsToTable(results, headings)
 
-  let summary = `Total games: ${count}\n`
-  summary += `Average tv difference: ${avgTvDiff}\n`
-  summary += `Worst tv difference: ${maxTvDiff}\n`
-  summary += `Average opponent rank: ${avgRank}\n`
-  summary += `Highest opponent rank: ${maxRank}\n`
+  const summary = table(
+    [
+      ['', ''],
+      ['Total games', count],
+      ['Average tv difference', avgTvDiff],
+      ['Worst tv difference', maxTvDiff],
+      ['Average opponent rank', avgRank],
+      ['Highest opponent rank', maxRank],
+    ],
+    {
+      align: ['l', 'r'],
+      delimiterStart: false,
+      delimiterEnd: false,
+    },
+  ).split('\n').slice(2).join('\n')
 
   return {
-    table,
+    resultsTable,
     summary,
     ...res,
   }
