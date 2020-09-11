@@ -1,8 +1,8 @@
 {
   "name": "adversitybot",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "a discord bot for blood bowl nerds",
-  "license": "MIT",
+  "license": "ISC",
   "scripts": {
     "start": "BABEL_ENV=node node index.js",
     "start-dev": "eval $(cat .env) BABEL_ENV=node nodemon index.js",
@@ -44,6 +44,5 @@
   "devDependencies": {
     "@babel/node": "^7.10.5"
   },
-  "author": "",
-  "license": "ISC"
+  "author": ""
 }
