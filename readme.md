@@ -1,8 +1,7 @@
 Hallo!
 
 
-
-adversitybot is a bot that shows some info on how tough a teams run was in a season. It's only checking s34 for now, expect it to change to the latest season with a season select flag in the near future.
+adversitybot is a bot that shows some info on how tough a teams run was in a season. 
 
 
 
@@ -22,14 +21,14 @@ Remember to add a codeblock to preserve formatting if you copy paste the bots re
 
 
 Current default season is `34`
-Use `-s <season number>`` to select a different season
+Use `-s <season number>` to select a different season
 ```!a -s 35 My current team```
 
 
 
 To add adversitybot to your channel head to <https://discordapp.com/oauth2/authorize?client_id=747055885645381662&scope=bot>
 
-It's well behaved and will only respond to DMs or messages from a channel named 'adversitybot'
+It's well behaved and will only respond to DMs or messages in a channel named 'adversitybot'
 
 
 

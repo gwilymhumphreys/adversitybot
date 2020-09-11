@@ -18,7 +18,7 @@ if (!token) {
 export async function handleMessage(message) {
   try {
     if (!message.content.startsWith(prefix) || message.author.bot) return
-    if (!(message.channel.type === 'DM' || message.channel.name.toLowerCase().replace(/\s/g, '') === 'adversitybot')) return
+    if (!((message.channel.type || '').toLowerCase() === 'dm' || (message.channel.name || '').toLowerCase().replace(/\s/g, '') === 'adversitybot')) return
 
     // console.log('got message', message)
 
