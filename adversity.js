@@ -6,7 +6,7 @@ import { fetchTeamMatches } from './fetch'
 import gradient from './gradientString'
 
 
-const compFromSeason = season =>  `Ranked ${season}-5 conc. limit`
+export const compFromSeason = season =>  `Ranked ${season}-5 conc. limit`
 
 const tvCountFromDiff = tvDiff => Math.abs(Math.floor(tvDiff / 50))
 const rankCountFromRank = rank => Math.abs(Math.floor(rank / 10))
@@ -95,8 +95,7 @@ const resultsToTable = (results, headings) => {
   return mdTable
 }
 
-export async function _adversity(headings, teamName, season=34, options={}) {
-  const compName = compFromSeason(season)
+export async function _adversity(headings, teamName, compName, options={}) {
   const res = await getResults(teamName, compName, options.colour)
 
   const {

@@ -1,5 +1,6 @@
 import Discord from 'discord.js'
-import { adversity, adversityLong, adversityShort } from './adversity'
+import { adversity, adversityLong, adversityShort, compFromSeason } from './adversity'
+import readme from './readme'
 
 
 const prepend = '```json\n'
@@ -25,25 +26,27 @@ export async function handleMessage(message) {
     const command = args.shift().toLowerCase()
 
     if (command === 'help') {
-      await message.channel.send(
-        'To check a teams history give the bot one of the following commands:\n' +
-        '\n`!adversity` or `!a` <team name>' +
-        '```!a My lovely team name```' +
-        '\n`!adversityshort` or `!as` <team name>' +
-        '```!as My lovely team name```' +
-        '\n`!adversitylong` or `!al` <team name>' +
-        '```!al My lovely team name```' +
-        ' \n\n ',
-      )
-      await message.channel.send(`\n\n----------------\n\nTo add adversitybot to your channel head to <https://discordapp.com/oauth2/authorize?client_id=747055885645381662&scope=bot>`)
-      await message.channel.send(`It's well behaved and will only respond to DMs or messages from a channel named 'adversitybot'`)
+      const helpText = await readme()
+      await message.channel.send(helpText)
       return
     }
 
-    const teamName = args.join(' ')
+    const argsString = args.join(' ')
+    let season = 34
+    let teamName = argsString
+
+    const matches = argsString.match(/-s (\d\d)\s(.*)/)
+    if (matches && matches[1]) {
+      season = matches[1]
+      teamName = matches[2]
+    }
+    const compName = compFromSeason(season)
+
     let results
     if (!teamName) return message.channel.send('Enter a team name to check after the command, e.g. ```!a My lovely team name```')
-    message.channel.send(`Checking team \`${teamName}\`...`)
+
+    message.channel.send(`Checking team \`${teamName}\` in competition \`${compName}\`...`)
+
 
     if (command === 'as' || command === 'adversityshort') results = await adversityShort(teamName)
     else if (command === 'al' || command === 'adversitylong') results = await adversityLong(teamName)
