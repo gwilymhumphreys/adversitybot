@@ -2,4 +2,4 @@
 require('@babel/register')({
 })
 
-require('./bot')
+require('./src/bot')

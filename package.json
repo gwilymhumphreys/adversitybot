@@ -6,8 +6,8 @@
   "scripts": {
     "start": "BABEL_ENV=node node index.js",
     "start-dev": "eval $(cat .env) BABEL_ENV=node nodemon index.js",
-    "races": "BABEL_ENV=node babel-node races.js",
-    "tv": "BABEL_ENV=node babel-node tv.js"
+    "races": "BABEL_ENV=node babel-node src/races.js",
+    "tv": "BABEL_ENV=node babel-node src/tv.js"
   },
   "main": "races.js",
   "dependencies": {

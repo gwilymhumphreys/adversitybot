@@ -1,7 +1,7 @@
 Hallo!
 
 
-adversitybot is a bot that shows some info on how tough a teams run was in a season. 
+adversitybot is a bot that shows some info on how tough a teams run was in a season.
 
 
 
@@ -37,3 +37,7 @@ Head to the `general` channel for comments, suggestions, etc
 
 
 The source for this bot is available at <https://github.com/gwilymhumphreys/adversitybot>
+
+
+
+Enjoy :two_hearts:

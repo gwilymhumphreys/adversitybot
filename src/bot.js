@@ -48,17 +48,16 @@ export async function handleMessage(message) {
     message.channel.send(`Checking team \`${teamName}\` in competition \`${compName}\`...`)
 
 
-    if (command === 'as' || command === 'adversityshort') results = await adversityShort(teamName)
-    else if (command === 'al' || command === 'adversitylong') results = await adversityLong(teamName)
-    else results = await adversity(teamName)
+    if (command === 'as' || command === 'adversityshort') results = await adversityShort(teamName, compName)
+    else if (command === 'al' || command === 'adversitylong') results = await adversityLong(teamName, compName)
+    else results = await adversity(teamName, compName)
 
     const {
       resultsTable,
       summary,
     } = results
 
-    message.channel.send(codeBlock(summary))
-    message.channel.send(' ')
+    message.channel.send(codeBlock(summary) + '\n\n')
     await message.channel.send(codeBlock(resultsTable), {split: {prepend, append}})
   }
   catch (err) {
